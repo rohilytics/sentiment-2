@@ -3,7 +3,7 @@ from llama_cpp import Llama, LlamaGrammar
 import sqlite3
 
 # Connect to the existing SQLite database
-conn = sqlite3.connect('/root/sentiment-main/reuters.db')
+conn = sqlite3.connect('/root/sentiment-2-main/reuters.db')
 cursor = conn.cursor()
 
 # Fetch all news articles
@@ -11,7 +11,7 @@ cursor.execute("SELECT news_id, headline, text FROM news LIMIT 2000 OFFSET 1000"
 news_articles = cursor.fetchall()
 
 # Create or connect to the new database where the sentiment will be stored
-conn_sentiment = sqlite3.connect('/root/sentiment-main/news_sentiment.db')
+conn_sentiment = sqlite3.connect('/root/sentiment-2-main/news_sentiment.db')
 cursor_sentiment = conn_sentiment.cursor()
 
 # Create a table to store the news and its sentiment score
@@ -62,7 +62,7 @@ grammar = LlamaGrammar.from_string(grammar)
 # Load the Llama model
 print("Remember to change the model_path variable!")
 llm = Llama(
-    model_path = r"/root/sentiment-main/Llama-3-Instruct-8B-SPPO-Iter3-Q5_K_M.gguf",
+    model_path = r"/root/sentiment-2-main/Llama-3-Instruct-8B-SPPO-Iter3-Q5_K_M.gguf",
     n_gpu_layers = -1,
     seed = 123,
     n_ctx = 8192,
