@@ -7,7 +7,7 @@ conn = sqlite3.connect('/root/sentiment-2-main/reuters.db')
 cursor = conn.cursor()
 
 # Fetch all news articles
-cursor.execute("SELECT news_id, headline, text FROM news LIMIT 2000 OFFSET 1000")
+cursor.execute("SELECT news_id, headline, text FROM news LIMIT 1500 OFFSET 1000")
 news_articles = cursor.fetchall()
 
 # Create or connect to the new database where the sentiment will be stored
